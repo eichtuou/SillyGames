@@ -14,6 +14,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 
 class AlienInvasion:
@@ -21,6 +22,8 @@ class AlienInvasion:
 
     def __init__(self):
         """Initialize the game, and create game resources."""
+
+        # initialize game
         pygame.init()
         pygame.display.set_caption("Alien Invasion")
 
@@ -34,25 +37,91 @@ class AlienInvasion:
         # ship
         self.ship = Ship(self)
 
+        # group bullets
+        self.bullets = pygame.sprite.Group()
+
+
+    def _fire_bullet(self):
+        """Create a new bullet and add it to the bullets group."""
+
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
+
+
+    def _check_events(self):
+        """Respond to keypresses and mouse events."""
+
+        for event in pygame.event.get():
+            # quit game if window is closed
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+            # check for keypresses
+            elif event.type == pygame.KEYDOWN:
+                self._check_keydown_events(event)
+
+            # check for key releases
+            elif event.type == pygame.KEYUP:
+                self._check_keyup_events(event)
+
+
+    def _check_keydown_events(self, event):
+        """Respond to keypresses."""
+
+        # quit game by pressing q
+        if event.key == pygame.K_q:
+            sys.exit()
+
+        # move right
+        elif event.key == pygame.K_RIGHT:
+            self.ship.moving_right = True
+
+        # move left
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = True
+
+        # fire bullets
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
+
+
+    def _check_keyup_events(self, event):
+        """Respond to key releases."""
+
+        # stop moving right
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = False
+
+        # stop moving left
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = False
+
+
+    def _update_screen(self):
+        """Update images on the screen, and flip to the new screen."""
+
+        self.screen.fill(self.settings.bg_color)
+
+        # draw bullets
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
+
+        self.ship.blitme()
+        pygame.display.flip()
+
 
     def run_game(self):
         """Start the main loop for the game."""
+
         while True:
-            # watch for keyboard and mouse events
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-
-            # set frame rate to 60 FPS
+            self._check_events()
+            self.ship.update()
+            self.bullets.update()
+            self._update_screen()
             self.clock.tick(60)
-
-            # redraw the screen
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()
-            pygame.display.flip()
 
 
 if __name__ == '__main__':
-    # make a game instance, and run the game.
+    """ Make a game instance, and run the game."""
     ai = AlienInvasion()
     ai.run_game()
