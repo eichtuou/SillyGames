@@ -15,6 +15,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
 
 
 class AlienInvasion:
@@ -37,16 +38,36 @@ class AlienInvasion:
         # ship
         self.ship = Ship(self)
 
-        # group bullets
+        # bullets
         self.bullets = pygame.sprite.Group()
 
+        # aliens
+        self.aliens = pygame.sprite.Group()
+        self._create_fleet()
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
 
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
+    def _update_bullets(self):
+        """Update position of bullets and get rid of old bullets."""
+
+        # update positions
+        self.bullets.update()
+
+        # delete bullets that are no longer in the screen
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+
+    def _create_fleet(self):
+        """Create the fleet of aliens."""
+
+        alien = Alien(self)
+        self.aliens.add(alien)
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -63,7 +84,6 @@ class AlienInvasion:
             # check for key releases
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
-
 
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
@@ -84,7 +104,6 @@ class AlienInvasion:
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
 
-
     def _check_keyup_events(self, event):
         """Respond to key releases."""
 
@@ -96,29 +115,30 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
 
-
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
 
+        # background
         self.screen.fill(self.settings.bg_color)
 
         # draw bullets
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
 
+        # refresh screen
         self.ship.blitme()
+        self.aliens.draw(self.screen)
         pygame.display.flip()
-
 
     def run_game(self):
         """Start the main loop for the game."""
 
         while True:
+            self.clock.tick(60)
             self._check_events()
             self.ship.update()
-            self.bullets.update()
+            self._update_bullets()
             self._update_screen()
-            self.clock.tick(60)
 
 
 if __name__ == '__main__':
