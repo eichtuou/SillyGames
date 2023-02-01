@@ -1,5 +1,6 @@
 import pygame
 
+
 class Ship:
     """A class to manage the ship."""
 
@@ -22,7 +23,6 @@ class Ship:
         # movement flag; start with a ship that's not moving.
         self.moving_right = False
         self.moving_left = False
-
 
     def update(self):
         """Update the ship's position based on the movement flag."""
