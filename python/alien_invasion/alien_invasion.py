@@ -67,6 +67,20 @@ class AlienInvasion:
         """Create the fleet of aliens."""
 
         alien = Alien(self)
+
+        # Spacing between aliens is one alien width
+        alien_width = alien.rect.width
+
+        # Create an alien and keep adding aliens until there's no room left.
+        current_x = alien_width
+        while current_x < (self.settings.screen_width - 2 * alien_width):
+           new_alien = Alien(self)
+           new_alien.x = current_x
+           new_alien.rect.x = current_x
+           self.aliens.add(new_alien)
+           current_x += 2 * alien_width
+
+
         self.aliens.add(alien)
 
     def _check_events(self):
