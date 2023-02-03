@@ -82,7 +82,7 @@ class AlienInvasion:
         current_x, current_y = alien_width, alien_height
 
         # create rows of aliens with 1 alien width in between
-        while current_y < (self.settings.screen_height - 15 * alien_height):
+        while current_y < (self.settings.screen_height - 7 * alien_height):
             while current_x < (self.settings.screen_width - 2 * alien_width):
                 self._create_alien(current_x, current_y)
                 current_x += 2 * alien_width
