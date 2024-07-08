@@ -1,0 +1,12 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.user
+/.vs
+/.git
+/.github
+/SnakeGame_NodeJS/.vs/SnakeGame
+/SnakeGame_NodeJS/bin
+/SnakeGame_NodeJS/node_modules
+/SnakeGame_NodeJS/obj
