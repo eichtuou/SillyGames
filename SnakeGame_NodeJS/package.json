@@ -1,0 +1,18 @@
+{
+    "name": "snake-game",
+    "version": "0.0.0",
+    "description": "SnakeGame",
+    "main": "app.js",
+    "author": {
+        "name": ""
+    },
+    "eslintConfig": {},
+    "dependencies": {
+        "express": "^4.19.2",
+        "p5": "^1.9.4",
+        "socket.io": "^4.7.5"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.4"
+    }
+}
