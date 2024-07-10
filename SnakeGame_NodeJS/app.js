@@ -3,10 +3,10 @@ var app = express();
 var port = 1337;
 
 app.use(express.static('public'));
+app.set('view engine', 'pug');
 
 app.listen(port);
 app.get('/', function (req, res) {
-    res.send('Hello World!');
+    res.render('index');
 });
 
-console.log("HERE");
