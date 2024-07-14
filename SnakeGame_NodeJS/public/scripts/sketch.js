@@ -1,9 +1,8 @@
+/// <reference path="../../node_modules/@types/p5/global.d.ts"/>
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(600, 600);
 }
 
 function draw() {
-    background(199, 0, 200);
-    ellipse(mouseX, mouseY, 60, 60);
+    background(51);
 }
-

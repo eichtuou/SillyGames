@@ -1,4 +1,3 @@
-'use strict';
 var express = require('express');
 var path = require('path');
 var debug = require('debug')('appDebug');
@@ -31,6 +30,7 @@ app.use('/p5', express.static(path.join(__dirname, 'node_modules/p5/lib')));
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
+    // @ts-ignore
     err.status = 404;
     next(err);
 });
@@ -57,6 +57,7 @@ app.use(function (err, req, res, next) {
 
 // Start server
 var server = app.listen(app.get('port'), function () {
+    // @ts-ignore
     debug('Server listening on port ' + server.address().port);
 });
 
