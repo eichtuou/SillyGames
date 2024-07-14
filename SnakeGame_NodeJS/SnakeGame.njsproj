@@ -6,7 +6,7 @@
     <RootNamespace>SnakeGame</RootNamespace>
     <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
     <NodeExePath>C:\Program Files\nodejs\node.exe</NodeExePath>
-    <NodeExeArguments>C:\Users\eichtuou\Documents\git\4fun\SnakeGame_NodeJS\node_modules\nodemon\bin\nodemon.js</NodeExeArguments>
+    <NodeExeArguments>C:\Users\eichtuou\Documents\source\repos\git\4fun\SnakeGame_NodeJS\node_modules\nodemon\bin\nodemon.js</NodeExeArguments>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -32,19 +32,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="public\scripts\sketch.js" />
+    <Content Include="public\stylesheets\main.css" />
+    <Content Include="routes\index.js" />
+    <Content Include="views\error.pug" />
     <Content Include="views\includes\header.pug" />
     <Content Include="package.json" />
-    <Content Include="public\style.css">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="README.md" />
-    <Content Include="public\sketch.js" />
     <Content Include="views\layout.pug" />
     <Content Include="views\index.pug">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="public\images\" />
+    <Folder Include="public\scripts\" />
+    <Folder Include="public\stylesheets\" />
+    <Folder Include="routes\" />
     <Folder Include="views\includes\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
