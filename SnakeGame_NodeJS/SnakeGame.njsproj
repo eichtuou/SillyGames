@@ -6,7 +6,7 @@
     <RootNamespace>SnakeGame</RootNamespace>
     <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
     <NodeExePath>C:\Program Files\nodejs\node.exe</NodeExePath>
-    <NodeExeArguments>C:\Users\eichtuou\Documents\source\git\4fun\SnakeGame_NodeJS\node_modules\nodemon\bin\nodemon.js</NodeExeArguments>
+    <NodeExeArguments>C:\Users\eichtuou\Documents\source\repos\4fun\SnakeGame_NodeJS\node_modules\nodemon\bin\nodemon.js</NodeExeArguments>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -32,12 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="libman.json" />
+    <Content Include="public\lib\p5.js" />
     <Content Include="public\scripts\sketch.js" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="routes\index.js" />
-    <Content Include="tsconfig.json">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="views\error.pug" />
     <Content Include="views\includes\header.pug" />
     <Content Include="package.json" />
@@ -48,6 +47,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="public\lib\" />
     <Folder Include="public\images\" />
     <Folder Include="public\scripts\" />
     <Folder Include="public\stylesheets\" />
