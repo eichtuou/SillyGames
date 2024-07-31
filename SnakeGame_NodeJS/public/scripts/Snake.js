@@ -2,10 +2,10 @@ class Snake {
     constructor() {
         this.x = 0;
         this.y = 0;
-        this.xSpeed = 1;
-        this.ySpeed = 0;
+        this.xDirection = 1;
+        this.yDirection = 0;
         this.size = 1;
-        this.bodyVector = 1;
+        this.body = [];
     }
 
     show() {
@@ -14,13 +14,13 @@ class Snake {
     }
 
     direction(x, y) {
-        this.xSpeed = x;
-        this.ySpeed = y;
+        this.xDirection = x;
+        this.yDirection = y;
     }
 
     update() {
-        this.x = this.x + this.xSpeed * pixelSize;
-        this.y = this.y + this.ySpeed * pixelSize;
+        this.x = this.x + this.xDirection * pixelSize;
+        this.y = this.y + this.yDirection * pixelSize;
         this.x = constrain(this.x, 0, width - pixelSize);
         this.y = constrain(this.y, 0, height - pixelSize);
     }
