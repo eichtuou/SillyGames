@@ -1,12 +1,12 @@
 /// <reference path="../../node_modules/@types/p5/global.d.ts" />
 
-const pixelSize = 12;
+const pixelSize = 15;
 var snake;
 var food;
 
 function setup() {
     createCanvas(500, 500);
-    frameRate(8);
+    frameRate(5);
     snake = new Snake();
     food = new Food();
 }
