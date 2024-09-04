@@ -1,5 +1,5 @@
 class Food {
-    constructor(snake) {
+    constructor() {
         this.x = floor(random(cols));
         this.y = floor(random(rows));
     }
@@ -12,6 +12,6 @@ class Food {
     newFood() {
         this.x = floor(random(cols));
         this.y = floor(random(rows));
-        this.render();
     }
 }
+
