@@ -6,6 +6,7 @@ var rows;
 var snake;
 var food;
 var gameOver;
+var score;
 
 function setup() {
     background(0);
@@ -14,6 +15,7 @@ function setup() {
     cols = floor(width / pxSize);
     rows = floor(height / pxSize);
     gameOver = false;
+    score = new Score;
     restartGame();
 }
 
@@ -29,10 +31,14 @@ function draw() {
 
         if (snake.ateFood(food)) {
             food.newFood(snake);
+            score.currentScore++;
         }
         snake.update();
 
     } else {
+        if (score.currentScore > score.highestScore) {
+            score.highestScore = score.currentScore;
+        }
         restartGame();
     }
 }
@@ -56,12 +62,16 @@ function restartGame() {
     if (gameOver == true) {
         background(255, 0, 0);
         strokeWeight(1);
-        textSize(4);
-        textAlign(CENTER, CENTER);
         fill(0);
+        textAlign(CENTER, CENTER);
+        textSize(5);
+        textStyle(BOLD);
         text("GAME OVER", cols / 2, rows / 2.25);
+        textSize(2);
+        textStyle(NORMAL);
+        text("HIGHSCORE " + String(score.highestScore), cols / 2, rows / 1.75);
         textSize(1.25);
-        text("Press ENTER to try again...", cols / 2, rows / 1.75);
+        text("Press ENTER to try again...", cols / 2, rows / 1.5);
         keyPressed();
         redraw();
     }
@@ -69,8 +79,36 @@ function restartGame() {
     if (gameOver == false) {
         background(0);
         snake = new Snake;
-        food = new Food(snake);
+        food = new Food;
+        validateFoodSpawnLocation(snake, food);
         redraw();
+    }
+}
+
+function validateFoodSpawnLocation(snake, food) {
+    let xArray = [];
+    let yArray = [];
+    let isXinSnakeBody = true;
+    let isYinSnakeBody = true;
+
+    while (isXinSnakeBody || isYinSnakeBody) {
+        for (var i = 0; snake.body.length - 1; i++) {
+            xArray.push(snake.body[i].x == food.x);
+            yArray.push(snake.body[i].y == food.y);
+        }
+        if (xArray.includes(true)) {
+            food.x = floor(random(cols));
+            xArray = [];
+        } else {
+            isXinSnakeBody = false;
+        }
+
+        if (yArray.includes(true)) {
+            food.y = floor(random(rows));
+            yArray = [];
+        } else {
+            isYinSnakeBody = false;
+        }
     }
 }
 
