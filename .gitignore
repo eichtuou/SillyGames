@@ -12,3 +12,8 @@
 /SnakeGame_NodeJS/obj
 /SnakeGame_NodeJS/tmp
 /SnakeGame_NodeJS/.vs
+/SnakeGame/NodeJS/.vs/SnakeGame
+/SnakeGame/NodeJS/bin
+/SnakeGame/NodeJS/node_modules
+/SnakeGame/NodeJS/obj
+/SnakeGame/NodeJS/.env
