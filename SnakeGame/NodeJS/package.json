@@ -1,0 +1,23 @@
+{
+    "name": "snake-game",
+    "version": "0.0.0",
+    "description": "SnakeGame",
+    "main": "app.js",
+    "author": {
+        "name": ""
+    },
+    "eslintConfig": {},
+    "devDependencies": {
+        "@types/p5": "^1.7.6",
+        "debug": "^4.4.0",
+        "eslint": "^9.17.0",
+        "morgan": "^1.10.0",
+        "nodemon": "^3.1.9"
+    },
+    "dependencies": {
+        "cookie-parser": "^1.4.7",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "pug": "^3.0.3"
+    }
+}
