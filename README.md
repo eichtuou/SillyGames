@@ -11,10 +11,10 @@ Life
 - [ ] JavaScript, Node.js, p5.js
 - [ ] Python, Django, PyGame
 - [ ] C#, MonoGame
-- [ ] C#, Unity
+- [ ] C++/C#, Unity
 
 Pong
 - [ ] JavaScript, Node.js, p5.js
 - [ ] Python, Django, PyGame
 - [ ] C#, MonoGame
-- [ ] C#, Unity
+- [ ] C++/C#, Unity
